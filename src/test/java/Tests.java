@@ -1,5 +1,7 @@
 import drivers.DriverProvider;
 import org.junit.*;
+import pages.myStore.AuthenticationPage;
+import pages.myStore.MainPage;
 
 
 public class Tests {
@@ -16,21 +18,48 @@ public class Tests {
 
 
     @Test
-    public void emptyEmailLabel(){
+    public void emptyEmailLabel() {
+        MainPage mainPage = new MainPage();
+        mainPage.open();
+        mainPage.clickSignInButton();
+        AuthenticationPage authenticationPage = new AuthenticationPage();
+        authenticationPage.clickSubmitLoginButton();
+        Assert.assertEquals(authenticationPage.getErrorEmailAddressRequired(), "An email address required.");
     }
 
     @Test
-    public void wrongEmailAdress(){
+    public void wrongEmailAddress() {
+        MainPage mainPage = new MainPage();
+        mainPage.open();
+        mainPage.clickSignInButton();
+        AuthenticationPage authenticationPage = new AuthenticationPage();
+        authenticationPage.addWrongEmailAddress();
+        authenticationPage.clickSubmitLoginButton();
+        Assert.assertEquals(authenticationPage.getErrorEmailAddressRequired(), "Invalid email address.");
     }
 
     @Test
-    public void emptyPasswordLabel(){
+    public void emptyPasswordLabel() {
+        MainPage mainPage = new MainPage();
+        mainPage.open();
+        mainPage.clickSignInButton();
+        AuthenticationPage authenticationPage = new AuthenticationPage();
+        authenticationPage.addCorrectEmailAddress();
+        authenticationPage.clickSubmitLoginButton();
+        Assert.assertEquals(authenticationPage.getErrorEmailAddressRequired(), "Password is required.");
     }
 
     @Test
-    public void noExistAccount(){
+    public void noExistAccount() {
+        MainPage mainPage = new MainPage();
+        mainPage.open();
+        mainPage.clickSignInButton();
+        AuthenticationPage authenticationPage = new AuthenticationPage();
+        authenticationPage.addCorrectEmailAddress();
+        authenticationPage.addPassword();
+        authenticationPage.clickSubmitLoginButton();
+        Assert.assertEquals(authenticationPage.getErrorEmailAddressRequired(), "Authentication failed.");
     }
-
 
 
     @After
@@ -44,3 +73,4 @@ public class Tests {
         System.out.println("All tests finished.");
     }
 }
+

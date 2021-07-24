@@ -28,7 +28,7 @@ public class ChromeConfigurator implements DriverConfigurator {
 //        return new ChromeDriver(options);
 
         WebDriver driver = new ChromeDriver(options);
-        throttle(driver);
+//        throttle(driver);
         return driver;
     }
 
@@ -38,19 +38,19 @@ public class ChromeConfigurator implements DriverConfigurator {
      * @param driver
      * @see <a href="https://codoid.com/how-to-set-network-conditions-in-selenium/"></a>
      */
-    private void throttle(final WebDriver driver) {
-        try {
-            ChromeDriver castDriver = (ChromeDriver) driver;
-            CommandExecutor executor = castDriver.getCommandExecutor();
-            Map<String, Object> map = new HashMap<>();
-            map.put("offline", false);
-            map.put("latency", 5);
-            // its in bytes per second via docu
-            map.put("download_throughput", 100 * 1024);
-            map.put("upload_throughput", 100 * 1024);
-            executor.execute(new Command(castDriver.getSessionId(), "setNetworkConditions", ImmutableMap.of("network_conditions", ImmutableMap.copyOf(map))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void throttle(final WebDriver driver) {
+//        try {
+//            ChromeDriver castDriver = (ChromeDriver) driver;
+//            CommandExecutor executor = castDriver.getCommandExecutor();
+//            Map<String, Object> map = new HashMap<>();
+//            map.put("offline", false);
+//            map.put("latency", 5);
+//            // its in bytes per second via docu
+//            map.put("download_throughput", 100 * 1024);
+//            map.put("upload_throughput", 100 * 1024);
+//            executor.execute(new Command(castDriver.getSessionId(), "setNetworkConditions", ImmutableMap.of("network_conditions", ImmutableMap.copyOf(map))));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
