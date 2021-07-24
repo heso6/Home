@@ -1,12 +1,15 @@
 package drivers;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Browser;
 
 import java.util.concurrent.TimeUnit;
 
 public class DriverProvider {
     private static WebDriver driver;
+    private static WebDriverWait wait;
+
 
     public static WebDriver getDriver() {
         return getDriver(Browser.CHROME);
@@ -38,5 +41,12 @@ public class DriverProvider {
         assert driver != null;
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+    }
+
+    public static WebDriverWait getWait() {
+        if (wait == null) {
+            wait = new WebDriverWait(driver, 10);
+        }
+        return wait;
     }
 }
