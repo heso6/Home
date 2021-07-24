@@ -15,6 +15,22 @@ public class Tests {
     }
 
 
+    @Test
+    public void emptyEmailLabel(){
+    }
+
+    @Test
+    public void wrongEmailAdress(){
+    }
+
+    @Test
+    public void emptyPasswordLabel(){
+    }
+
+    @Test
+    public void noExistAccount(){
+    }
+
 
 
     @After
