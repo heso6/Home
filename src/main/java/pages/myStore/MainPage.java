@@ -35,6 +35,13 @@ public class MainPage extends Page {
     @FindBy(xpath = "//a[@title=\"Proceed to checkout\"]")
     private WebElement proceedToCheckoutButton;
 
+    @FindBy(xpath = "//span[@class=\"cross\"]")
+    private WebElement crossButton;
+
+    @FindBy(id = "header_logo")
+    private WebElement mainLogo;
+
+
     public void clickSignInButton() {
         DriverProvider.getWait().until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
@@ -45,13 +52,29 @@ public class MainPage extends Page {
         fadedShortSleeveTshirts.click();
     }
 
+    public void clickBlouse() {
+        DriverProvider.getWait().until(ExpectedConditions.elementToBeClickable(blouse));
+        blouse.click();
+    }
+
     public void clickAddToCart() {
         DriverProvider.getWait().until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
     }
 
-    public void clickProceedToCheckoutButton(){
+    public void clickProceedToCheckoutButton() {
         DriverProvider.getWait().until(ExpectedConditions.elementToBeClickable(proceedToCheckoutButton));
         proceedToCheckoutButton.click();
     }
+
+    public void clickCrossButton() {
+        DriverProvider.getWait().until(ExpectedConditions.visibilityOf(crossButton));
+        crossButton.click();
+    }
+
+    public void clickMainLogo() {
+        DriverProvider.getWait().until(ExpectedConditions.visibilityOf(mainLogo));
+        mainLogo.click();
+    }
+
 }

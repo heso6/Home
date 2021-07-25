@@ -63,7 +63,7 @@ public class Tests {
 
 
     @Test
-    public void addProductToTheCartAndGoToCartPage(){
+    public void addProductToTheCartAndGoToCartPage() {
         MainPage mainPage = new MainPage();
         mainPage.open();
         mainPage.clickFadedShortSleeveTshirts();
@@ -71,6 +71,21 @@ public class Tests {
         mainPage.clickProceedToCheckoutButton();
 
     }
+
+    @Test
+    public void addTwoProductToTheCartAndGoToCartPage() {
+        MainPage mainPage = new MainPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickAddToCart();
+        mainPage.clickCrossButton();
+        mainPage.clickMainLogo();
+        mainPage.clickBlouse();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+
+    }
+
 
     @After
     public void after() {
