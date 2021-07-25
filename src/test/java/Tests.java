@@ -1,6 +1,7 @@
 import drivers.DriverProvider;
 import org.junit.*;
 import pages.myStore.AuthenticationPage;
+import pages.myStore.CartPage;
 import pages.myStore.MainPage;
 
 
@@ -85,6 +86,32 @@ public class Tests {
         mainPage.clickProceedToCheckoutButton();
 
     }
+
+    @Test
+    public void checkPriceAndProductAvailabilityOnCart() {
+        MainPage mainPage = new MainPage();
+        CartPage cartPage = new CartPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+        Assert.assertEquals("In stock", cartPage.getProductAvailabilityOnCart());
+        Assert.assertEquals("$18.51", cartPage.getProductPriceOnCart());
+    }
+
+
+    @Test
+    public void changeQuantityOfProductsInBasket() {
+        MainPage mainPage = new MainPage();
+        CartPage cartPage = new CartPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+        cartPage.clickQuantityButtonPlusOnCartPage();
+    }
+
+
 
 
     @After
