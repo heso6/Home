@@ -111,8 +111,43 @@ public class Tests {
         cartPage.clickQuantityButtonPlusOnCartPage();
     }
 
+    @Test
+    public void changeQuantityOfProductsAndCheckPriceOnBasketCart() {
+        MainPage mainPage = new MainPage();
+        CartPage cartPage = new CartPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickQuantityButtonPlusBeforeCartPage();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+        Assert.assertEquals("$35.02", cartPage.getProductPriceOnCart());
+    }
 
 
+    @Test
+    public void deleteAllProductsOnCartPage() {
+        MainPage mainPage = new MainPage();
+        CartPage cartPage = new CartPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickQuantityButtonPlusBeforeCartPage();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+        cartPage.clickDeleteButtonOnCartPage();
+    }
+
+    @Test
+    public void deleteProductFromCartAndCheckInfoOnPage(){
+        MainPage mainPage = new MainPage();
+        CartPage cartPage = new CartPage();
+        mainPage.open();
+        mainPage.clickFadedShortSleeveTshirts();
+        mainPage.clickAddToCart();
+        mainPage.clickProceedToCheckoutButton();
+        cartPage.clickDeleteButtonOnCartPage();
+        System.out.println(cartPage.getEmptyBasketInfo());
+        Assert.assertEquals("Your shopping cart is empty.", cartPage.getEmptyBasketInfo());
+    }
 
     @After
     public void after() {

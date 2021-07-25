@@ -41,6 +41,9 @@ public class MainPage extends Page {
     @FindBy(id = "header_logo")
     private WebElement mainLogo;
 
+    @FindBy(xpath = "//a[@class=\"btn btn-default button-plus product_quantity_up\"]")
+    private WebElement quantityButtonPlusBeforeCartPage;
+
 
     public void clickSignInButton() {
         DriverProvider.getWait().until(ExpectedConditions.visibilityOf(signInButton));
@@ -75,6 +78,11 @@ public class MainPage extends Page {
     public void clickMainLogo() {
         DriverProvider.getWait().until(ExpectedConditions.visibilityOf(mainLogo));
         mainLogo.click();
+    }
+
+    public void clickQuantityButtonPlusBeforeCartPage() {
+        DriverProvider.getWait().until(ExpectedConditions.visibilityOf(quantityButtonPlusBeforeCartPage));
+        quantityButtonPlusBeforeCartPage.click();
     }
 
 }
